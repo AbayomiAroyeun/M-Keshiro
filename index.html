@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MO - LUXURY</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Top Header -->
+<header id="top-header">
+  <div id="header-content">
+    <div class="brand">
+      <a href="index.html" aria-label="MO-LUXURY Home">
+        <h1 id="mo">MO - LUXURY</h1>
+      </a>
+    </div>
+    <div id="header-right">
+      <nav id="top-bar" aria-label="Main Navigation">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">New</a></li>
+          <li><a href="#">Community</a></li>
+          <li><a href="gallerys.html">Collections</a></li>
+        </ul>
+      </nav>
+      <div id="social-icons" role="navigation" aria-label="Social Media Links">
+        <a href="https://wa.me/13475964919" target="_blank" aria-label="Chat on WhatsApp">
+          <img src="image/whatsapp-icon.png" alt="WhatsApp Icon">
+        </a>
+        <a href="https://www.facebook.com/share/1Faj4Qh5Pv/" target="_blank" aria-label="Visit Facebook Page">
+          <img src="image/facebook-icon.png" alt="Facebook Icon">
+        </a>
+        <a href="https://www.instagram.com/medinakeshiro" target="_blank" aria-label="Visit Instagram Profile">
+          <img src="image/instagram-icon.png" alt="Instagram Icon">
+        </a>
+        <a href="https://www.tiktok.com/@medina_keshiro" target="_blank" aria-label="Visit TikTok Profile">
+          <img src="image/tiktok-icon.png" alt="TikTok Icon">
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Date & Time -->
+<div id="datetime-display" aria-live="polite">
+  <span id="current-time"></span>
+</div>
+
+<!-- Luxury Video Section -->
+<section id="luxury" aria-label="Beyond Fashion elegance video">
+  <video autoplay muted loop playsinline id="bgVideo">
+    <source src="image/mo-lion.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div class="overlay"></div>
+  <div id="video-text-container" class="fade-in">
+    <h1 id="elegance">Beyond Fashion, elegance embodied.</h1>
+  </div>
+</section>
+
+<!-- Wear Display Gallery -->
+<section id="wear-display" aria-label="Wear Collection Gallery" class="fade-in">
+  <!-- Images will be added here by JavaScript -->
+</section>
+
+<!-- Full-image modal -->
+<div id="image-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-content">
+    <span id="modal-close" class="modal-close-btn" role="button" aria-label="Close image">×</span>
+    <img id="modal-image" src="" alt="">
+    <h3 id="modal-title" class="visually-hidden">Enlarged Gallery Image</h3>
+  </div>
+</div>
+
+<!-- Pictures Section -->
+<section id="pictures" class="fade-in">
+  <figure id="cover-picture">
+    <img src="image/modga9.jpg" alt="Featured Fashion Design">
+  </figure>
+  <article id="collection-pictures">
+    <p>
+      This modern fashion gallery is not just a collection; it's a statement.
+      Our gallery curates a unique vision of modern design, featuring pieces that blend art and clothing.
+      This collection is an immersive experience, inviting you to witness fashion not as a trend, but as wearable art.
+    </p>
+    <div id="collection-view">
+      <h4><a href="gallerys.html" class="gallerys-link">Take a look</a></h4>
+    </div>
+  </article>
+</section>
+
+<!-- Footer -->
+<footer id="bottom">
+  <nav aria-label="Footer Navigation" class="footer-section">
+    <ul id="questions">
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="aboutUs.html">Our Story</a></li>
+      <li><a href="#">Shipping & Refunds</a></li>
+      <li><a href="contact.html" class="contact">Contact Us</a></li>
+    </ul>
+  </nav>
+  <div class="footer-section" id="logo">
+    <img src="image/logo.jpg" id="footer-logo">
+  </div>
+  <div class="footer-section" id="social-icons-footer">
+    <!-- Social icons can be repeated here if desired -->
+  </div>
+  <div class="footer-section" id="email-container">
+    <a id="email-link" href="mailto:mkdesignsbymo@gmail.com">Email Us</a>
+  </div>
+  <p>&copy; 2025 @ A.A | All Rights Reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
