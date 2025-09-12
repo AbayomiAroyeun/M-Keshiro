@@ -1,6 +1,12 @@
 /* --- Global & Universal Styles --- */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;700&display=swap');
 
+/* Add this to the top of your CSS for graceful fallback if JS fails */
+body:not(.js-enabled) .fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 :root {
   --primary-color: #f5f5f5;
   --secondary-color: #0d0d0d;
@@ -437,5 +443,3 @@ body {
     transform: translateY(0);
   }
 }
-
-

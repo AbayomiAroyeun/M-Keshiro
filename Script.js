@@ -101,6 +101,33 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initial gallery creation
   createGallery();
 });
+document.addEventListener('DOMContentLoaded', () => {
+  document.body.classList.remove('js-enabled');
+  // ... rest of your script
+});
 
 
-
+function createGallery() {
+  if (wearDisplay) {
+    // Add a "loading" class or spinner here
+    wearDisplay.innerHTML = '<div class="loading-spinner"></div>';
+    
+    // Use a timeout to ensure a loading state is displayed
+    setTimeout(() => {
+      // Clear the loading spinner
+      wearDisplay.innerHTML = '';
+      
+      galleryImages.forEach(src => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = 'Luxury Wear Collection Image';
+        wearDisplay.appendChild(img);
+      });
+    }, 500); // Wait 500ms before adding images
+  }
+}
+const observerOptions = {
+  root: null,
+  rootMargin: "0px",
+  threshold: 0.25 // Changed from 0.1 to 0.25 for better detection
+}
