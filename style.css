@@ -4,7 +4,7 @@
 :root {
   --primary-color: #f5f5f5;
   --secondary-color: #0d0d0d;
-  --accent-color: #a1887f; /* A subtle, luxurious accent */
+  --accent-color: #a1887f;
 }
 
 /* Basic Reset */
@@ -45,14 +45,13 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap; /* Allows wrapping on small screens */
+  flex-wrap: wrap;
 }
 
 .brand a {
   text-decoration: none;
   color: gold;
 }
-
 
 .brand h1 {
   margin: 0;
@@ -61,21 +60,30 @@ body {
   font-weight: 700;
   letter-spacing: 2px;
   white-space: nowrap;
-  opacity: 0; /* Starts invisible */
-  animation: fadeInBrand 2s ease-in-out forwards; /* Apply the animation */
-  animation-delay: 0.5s; /* Delay the animation slightly to start after the page loads */
+  opacity: 0;
+  animation: fadeInBrand 2s ease-in-out forwards;
+  animation-delay: 0.5s;
 }
 
+/* Ensure consistent flex layout for header items on small screens */
 #header-right {
   display: flex;
   align-items: center;
   gap: 1rem;
+  width: 100%;
+  flex-direction: column;
   flex-wrap: wrap;
 }
 
+/* Style for social icons on small screens */
 #social-icons {
   display: flex;
   gap: 0.8rem;
+  justify-content: center;
+  order: 3;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
 }
 
 #social-icons img {
@@ -88,12 +96,18 @@ body {
   transform: scale(1.2);
 }
 
+#top-bar {
+  order: 2;
+  width: 100%;
+}
+
 #top-bar ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
-  gap: 1.5rem;
+  justify-content: center;
+  gap: 1rem;
 }
 
 #top-bar a {
@@ -180,7 +194,7 @@ body {
   border: 3px solid var(--accent-color);
   border-radius: 6px;
   max-width: 90%;
-  -webkit-overflow-scrolling: touch; /* for smoother iOS scrolling */
+  -webkit-overflow-scrolling: touch;
 }
 
 #wear-display img {
@@ -251,19 +265,18 @@ body {
 
 /* --- Pictures Section --- */
 #pictures {
-  display: flex; /* Make the container a flexbox */
-  flex-direction: row; /* Default layout: image and text side-by-side */
-  align-items: center; /* Vertically center the items */
+  display: flex;
   gap: 2rem;
   padding: 3rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
-  text-align: left; /* Align text to the left for side-by-side layout */
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
 }
 
 #cover-picture {
-   flex: 1; /* Allow the image container to grow and shrink */
-  min-width: 300px; /* Prevents image from becoming too small */
+   flex: 1;
 }
 
 #cover-picture img {
@@ -274,8 +287,8 @@ body {
 }
 
 #collection-pictures {
-  text-align: center;
   padding: 1rem;
+  flex: 1;
 }
 
 #collection-pictures p {
@@ -294,7 +307,7 @@ body {
   color: var(--accent-color);
   border: 5px solid var(--accent-color);
   padding: 0.8rem 2rem;
-  font-weight: 100;
+  font-weight: 400;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -360,22 +373,43 @@ body {
   transform: translateY(0);
 }
 
-#footer-logo{
+#footer-logo {
   width: 100px;
   height: auto;
   display: block;
   margin: auto;
-
 }
 
 /* --- Responsive Design --- */
 @media (min-width: 769px) {
+  #header-right {
+    flex-direction: row;
+    width: auto;
+  }
+
+  #top-bar {
+    order: 0;
+    width: auto;
+  }
+  
+  #social-icons {
+    order: 0;
+    width: auto;
+    padding-top: 0;
+    border-top: none;
+  }
+  
   #pictures {
     flex-direction: row;
     text-align: left;
   }
+  
   #collection-pictures {
     text-align: left;
+  }
+
+  #top-bar ul {
+    gap: 1.5rem;
   }
 }
 
@@ -384,11 +418,14 @@ body {
     flex-direction: column;
     text-align: center;
   }
+  
   #header-right {
     flex-direction: column;
     gap: 1rem;
     width: 100%;
+    align-items: center;
   }
+  
   #social-icons {
     justify-content: center;
     order: 3;
@@ -396,16 +433,21 @@ body {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     width: 100%;
   }
+  
   #top-bar {
+    order: 2;
     width: 100%;
   }
+  
   #top-bar ul {
     justify-content: center;
     gap: 1rem;
   }
+  
   #bottom {
     flex-direction: column;
   }
+  
   .footer-section {
     min-width: unset;
   }
@@ -421,7 +463,7 @@ body {
 @keyframes fadeInBrand {
   from {
     opacity: 0;
-    transform: translateY(-20px); /* Optional: Adds a slight upward movement */
+    transform: translateY(-20px);
   }
   to {
     opacity: 1;
