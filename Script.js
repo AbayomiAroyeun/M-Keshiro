@@ -59,14 +59,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Wear Display Gallery Logic ---
   const galleryImages = [
-    'image/modga1.jpg',
-    'image/modga2.jpg',
-    'image/modga3.jpg',
-    'image/modga4.jpg',
-    'image/modga5.jpg',
-    'image/modga6.jpg',
-    'image/modga7.jpg',
-    'image/modga8.jpg'
+    '../M-Keshiro/image/modga1.jpg',
+    '../M-Keshiro/image/modga2.jpg',
+    '../M-Keshiro/image/modga3.jpg',
+    '../M-Keshiro/image/modga4.jpg',
+    '../M-Keshiro/image/modga5.jpg',
+    '../M-Keshiro/image/modga6.jpg',
+    '../M-Keshiro/image/modga7.jpg',
+    '../M-Keshiro/image/modga8.jpg'
   ];
 
   function createGallery(images) {
