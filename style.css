@@ -364,23 +364,32 @@ body {
   color: var(--accent-color);
 }
 
-/* --- Scroll fade-in effect --- */
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 1s ease-out, transform 1s ease-out;
-}
-
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 #footer-logo {
   width: 100px;
   height: auto;
   display: block;
   margin: auto;
+}
+
+/* --- Scroll fade-in effect with JS fallback --- */
+
+/* Default: show elements if JS is disabled */
+.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* JS-enabled mode: start hidden */
+.js-enabled .fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* When element scrolls into view */
+.js-enabled .fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* --- Media Queries (Overrides for Larger Screens) --- */
@@ -431,7 +440,6 @@ body {
     width: 150px;
     height: 150px;
   }
-  
 }
 
 @keyframes fadeInBrand {

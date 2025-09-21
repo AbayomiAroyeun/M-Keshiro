@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalImage = document.getElementById('modal-image');
   const modalCloseBtn = document.getElementById('modal-close');
 
+    // --- Enable JS state ---
+  document.body.classList.add('js-enabled')
+
   // --- Time Display Function ---
   function updateTime() {
     const now = new Date();
@@ -29,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const observerOptions = {
     root: null,
     rootMargin: "0px",
-    threshold: 0.1
+    threshold: 0.25
   };
 
   const observer = new IntersectionObserver((entries, observer) => {
@@ -55,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'image/modga6.jpg',
     'image/modga7.jpg',
     'image/modga8.jpg'
-    // Add all your image paths here
+    // all your image paths added here
   ];
 
   function createGallery() {
@@ -69,33 +72,31 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  if (wearDisplay) {
-      wearDisplay.addEventListener('click', (e) => {
-          if (e.target.tagName === 'IMG') {
-              modalImage.src = e.target.src;
-              imageModal.classList.add('show');
-              // Set alt text for accessibility
-              modalImage.alt = e.target.alt;
-              document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
-          }
-      });
+    if (wearDisplay) {
+    wearDisplay.addEventListener('click', (e) => {
+      if (e.target.tagName === 'IMG') {
+        modalImage.src = e.target.src;
+        imageModal.classList.add('show');
+        modalImage.alt = e.target.alt;
+        document.body.style.overflow = 'hidden';
+      }
+    });
   }
 
   if (modalCloseBtn) {
-      modalCloseBtn.addEventListener('click', () => {
-          imageModal.classList.remove('show');
-          document.body.style.overflow = ''; // Re-enable scrolling
-      });
+    modalCloseBtn.addEventListener('click', () => {
+      imageModal.classList.remove('show');
+      document.body.style.overflow = '';
+    });
   }
 
   if (imageModal) {
-      // Close modal when clicking outside the image
-      imageModal.addEventListener('click', (e) => {
-          if (e.target === imageModal) {
-              imageModal.classList.remove('show');
-              document.body.style.overflow = '';
-          }
-      });
+    imageModal.addEventListener('click', (e) => {
+      if (e.target === imageModal) {
+        imageModal.classList.remove('show');
+        document.body.style.overflow = '';
+      }
+    });
   }
   
   // Initial gallery creation
