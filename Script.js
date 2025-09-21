@@ -5,9 +5,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const imageModal = document.getElementById('image-modal');
   const modalImage = document.getElementById('modal-image');
   const modalCloseBtn = document.getElementById('modal-close');
+  const burgerBtn = document.querySelector('.burger');
+  const mobileNav = document.getElementById('top-bar');
+  const hasSubMenu = document.querySelector('.has-sub > a');
+  const subMenu = document.getElementById('submenu');
+  const sectionButtons = document.querySelectorAll('.section-btn');
 
-    // --- Enable JS state ---
-  document.body.classList.add('js-enabled')
+  // --- Enable JS state and cleanup old DOMContentLoaded event ---
+  // The single DOMContentLoaded event handles all script initialization.
+  // The `document.body.classList.remove('js-enabled')` in the old code was incorrect.
+  document.body.classList.add('js-enabled');
 
   // --- Time Display Function ---
   function updateTime() {
@@ -23,7 +30,9 @@ document.addEventListener('DOMContentLoaded', () => {
       hour12: false
     };
     const timeString = now.toLocaleDateString('en-US', options);
-    timeSpan.textContent = timeString;
+    if (timeSpan) {
+      timeSpan.textContent = timeString;
+    }
   }
   updateTime();
   setInterval(updateTime, 1000);
@@ -58,38 +67,63 @@ document.addEventListener('DOMContentLoaded', () => {
     'image/modga6.jpg',
     'image/modga7.jpg',
     'image/modga8.jpg'
-    // all your image paths added here
   ];
 
-  function createGallery() {
-    if (wearDisplay) {
-        galleryImages.forEach(src => {
-            const img = document.createElement('img');
-            img.src = src;
-            img.alt = 'Luxury Wear Collection Image';
-            wearDisplay.appendChild(img);
-        });
-    }
+  function createGallery(images) {
+    if (!wearDisplay) return;
+
+    wearDisplay.innerHTML = '<div class="loading-spinner"></div>';
+
+    setTimeout(() => {
+      wearDisplay.innerHTML = '';
+      images.forEach(src => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = 'Luxury Wear Collection Image';
+        wearDisplay.appendChild(img);
+      });
+    }, 500);
   }
 
-    if (wearDisplay) {
+  // Initial gallery creation
+  createGallery(galleryImages);
+
+  // --- Wear Buttons Logic ---
+  const allImages = [...galleryImages]; // Assuming all images are in this array
+  const readyImages = galleryImages.slice(0, 4); // Example subset
+  const collectionsImages = galleryImages.slice(4, 6); // Example subset
+  const customizedImages = galleryImages.slice(6); // Example subset
+
+  sectionButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const section = button.dataset.section;
+      if (section === 'ready') {
+        createGallery(readyImages);
+      } else if (section === 'collections') {
+        createGallery(collectionsImages);
+      } else if (section === 'customized') {
+        createGallery(customizedImages);
+      }
+    });
+  });
+
+  // --- Image Modal Logic ---
+  if (wearDisplay) {
     wearDisplay.addEventListener('click', (e) => {
       if (e.target.tagName === 'IMG') {
         modalImage.src = e.target.src;
-        imageModal.classList.add('show');
         modalImage.alt = e.target.alt;
+        imageModal.classList.add('show');
         document.body.style.overflow = 'hidden';
       }
     });
   }
-
   if (modalCloseBtn) {
     modalCloseBtn.addEventListener('click', () => {
       imageModal.classList.remove('show');
       document.body.style.overflow = '';
     });
   }
-
   if (imageModal) {
     imageModal.addEventListener('click', (e) => {
       if (e.target === imageModal) {
@@ -98,34 +132,37 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-  
-  // Initial gallery creation
-  createGallery();
-});
 
-
-
-function createGallery() {
-  if (wearDisplay) {
-    // Add a "loading" class or spinner here
-    wearDisplay.innerHTML = '<div class="loading-spinner"></div>';
-    
-    // Use a timeout to ensure a loading state is displayed
-    setTimeout(() => {
-      // Clear the loading spinner
-      wearDisplay.innerHTML = '';
-      
-      galleryImages.forEach(src => {
-        const img = document.createElement('img');
-        img.src = src;
-        img.alt = 'Luxury Wear Collection Image';
-        wearDisplay.appendChild(img);
-      });
-    }, 500); // Wait 500ms before adding images
+  // --- Mobile Navigation Logic ---
+  function toggleMobileNav() {
+    const isExpanded = burgerBtn.getAttribute('aria-expanded') === 'true' || false;
+    burgerBtn.classList.toggle('active');
+    burgerBtn.setAttribute('aria-expanded', !isExpanded);
+    mobileNav.classList.toggle('active');
+    document.body.classList.toggle('nav-open');
   }
-}
-const observerOptions = {
-  root: null,
-  rootMargin: "0px",
-  threshold: 0.25 // Changed from 0.1 to 0.25 for better detection
-}
+
+  if (burgerBtn) {
+    burgerBtn.addEventListener('click', toggleMobileNav);
+  }
+
+  // Close mobile menu when a navigation link is clicked
+  const navLinks = document.querySelectorAll('#main-menu a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (mobileNav.classList.contains('active') && !link.closest('.has-sub')) {
+        toggleMobileNav();
+      }
+    });
+  });
+
+  // --- Submenu Logic ---
+  if (hasSubMenu) {
+    hasSubMenu.addEventListener('click', (e) => {
+      e.preventDefault();
+      const isExpanded = hasSubMenu.getAttribute('aria-expanded') === 'true' || false;
+      hasSubMenu.setAttribute('aria-expanded', !isExpanded);
+      subMenu.classList.toggle('active');
+    });
+  }
+});
