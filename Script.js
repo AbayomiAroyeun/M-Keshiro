@@ -102,10 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initial gallery creation
   createGallery();
 });
-document.addEventListener('DOMContentLoaded', () => {
-  document.body.classList.remove('js-enabled');
-  // ... rest of your script
-});
+
 
 
 function createGallery() {
