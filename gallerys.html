@@ -59,32 +59,116 @@
       padding: 15px;
       font-size: 0.9rem;
     }
+    /* Container for each gallery image and number */
+.gallery-item {
+  position: relative; /* This is key for positioning the number */
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Position and style the number overlay */
+.image-number {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: bold;
+  z-index: 5;
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+}
+
+/* Ensure the image styling is applied to the image inside the new wrapper */
+.gallery-item img {
+  width: 100%;
+  border-radius: 12px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+/* Update hover effect to be on the parent container */
+.gallery-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+}
   </style>
 </head>
 
-<body>
+<body class="js-enabled" id="gallery-page">
   <!-- Header -->
   <header>
     <h1>Take a Look at Our Gallery</h1>
   </header>
 
   <!-- Gallery -->
-  <main>
+<main>
     <div class="gallerys">
-      <img src="../M-Keshiro/image/modga1.jpg" alt="gallery 1">
-      <img src="../M-Keshiro/image/modga2.jpg" alt="gallery 2">
-      <img src="../M-Keshiro/image/modga3.jpg" alt="gallery 3">
-      <img src="../M-Keshiro/image/modga4.jpg" alt="gallery 4">
-      <img src="../M-Keshiro/image/modga5.jpg" alt="gallery 5">
-      <img src="../M-Keshiro/image/modga6.jpg" alt="gallery 6">
-      <img src="../M-Keshiro/image/modga7.jpg" alt="gallery 7">
-      <img src="../M-Keshiro/image/modga8.jpg" alt="gallery 8">
-      <img src="../M-Keshiro/image/modga9.jpg" alt="gallery 9">
-      <img src="../M-Keshiro/image/modga12.jpg" alt="gallery 12">
-      <img src="../M-Keshiro/image/modga13.jpg" alt="gallery 12">
-      <img src="../M-Keshiro/image/modga14.jpg" alt="gallery 13">
-      <img src="../M-Keshiro/image/modga15.jpg" alt="gallery 14">
-            
+      <!-- Images -->
+      <img src="../M-Keshiro/image/modga1.jpg" alt="Modern gallery design 1" loading="lazy">
+      <img src="../M-Keshiro/image/modga2.jpg" alt="Modern gallery design 2" loading="lazy">
+      <img src="../M-Keshiro/image/modga3.jpg" alt="Modern gallery design 3" loading="lazy">
+      <img src="../M-Keshiro/image/modga4.jpg" alt="Modern gallery design 4" loading="lazy">
+      <img src="../M-Keshiro/image/modga5.jpg" alt="Modern gallery design 5" loading="lazy">
+      <img src="../M-Keshiro/image/modga6.jpg" alt="Modern gallery design 6" loading="lazy">
+
+      <!-- Videos -->
+      <video controls autoplay muted playsinline >
+        <source src="../M-Keshiro/image/modga20.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+
+      <video controls autoplay muted playsinline>
+        <source src="../M-Keshiro/image/modga21.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+
+      <!-- More images -->
+      <img src="../M-Keshiro/image/modga22.jpg" alt="Modern gallery design 22" loading="lazy">
+      <img src="../M-Keshiro/image/modga23.jpg" alt="Modern gallery design 23" loading="lazy">
+      <img src="../M-Keshiro/image/modga24.jpg" alt="Modern gallery design 24" loading="lazy">
+      <img src="../M-Keshiro/image/modga25.jpg" alt="Modern gallery design 25" loading="lazy">
+      <img src="../M-Keshiro/image/modga26.jpg" alt="Modern gallery design 26" loading="lazy">
+      <img src="../M-Keshiro/image/modga27.jpg" alt="Modern gallery design 27" loading="lazy">
+      <img src="../M-Keshiro/image/modga28.jpg" alt="Modern gallery design 28" loading="lazy">
+      <img src="../M-Keshiro/image/modga29.jpg" alt="Modern gallery design 29" loading="lazy">
+      <img src="../M-Keshiro/image/modga30.jpg" alt="Modern gallery design 30" loading="lazy">
+      <img src="../M-Keshiro/image/modga31.jpg" alt="Modern gallery design 31" loading="lazy">
+      <img src="../M-Keshiro/image/modga32.jpg" alt="Modern gallery design 32" loading="lazy">
+      <img src="../M-Keshiro/image/modga33.jpg" alt="Modern gallery design 33" loading="lazy">
+      <img src="../M-Keshiro/image/modga34.jpg" alt="Modern gallery design 34" loading="lazy">
+      <img src="../M-Keshiro/image/modga35.jpg" alt="Modern gallery design 35" loading="lazy">
+      <img src="../M-Keshiro/image/modga36.jpg" alt="Modern gallery design 36" loading="lazy">
+      <img src="../M-Keshiro/image/modga37.jpg" alt="Modern gallery design 37" loading="lazy">
+      <img src="../M-Keshiro/image/modga38.jpg" alt="Modern gallery design 38" loading="lazy">
+      <img src="../M-Keshiro/image/modga39.jpg" alt="Modern gallery design 39" loading="lazy">
+      <img src="../M-Keshiro/image/modga40.jpg" alt="Modern gallery design 40" loading="lazy">
+      <img src="../M-Keshiro/image/modga41.jpg" alt="Modern gallery design 41" loading="lazy">
+      <img src="../M-Keshiro/image/modga42.jpg" alt="Modern gallery design 42" loading="lazy">
+      <img src="../M-Keshiro/image/modga43.jpg" alt="Modern gallery design 43" loading="lazy">
+      <img src="../M-Keshiro/image/modga44.jpg" alt="Modern gallery design 44" loading="lazy">
+      <img src="../M-Keshiro/image/modga45.jpg" alt="Modern gallery design 45" loading="lazy">
+      <img src="../M-Keshiro/image/modga46.jpg" alt="Modern gallery design 46" loading="lazy">
+      <img src="../M-Keshiro/image/modga47.jpg" alt="Modern gallery design 47" loading="lazy">
+      <img src="../M-Keshiro/image/modga48.jpg" alt="Modern gallery design 48" loading="lazy">
+      <img src="../M-Keshiro/image/modga49.jpg" alt="Modern gallery design 49" loading="lazy">
+      <img src="../M-Keshiro/image/modga50.jpg" alt="Modern gallery design 50" loading="lazy">
+      <img src="../M-Keshiro/image/modga51.jpg" alt="Modern gallery design 51" loading="lazy">
+      <img src="../M-Keshiro/image/modga52.jpg" alt="Modern gallery design 52" loading="lazy">
+      <img src="../M-Keshiro/image/modga53.jpg" alt="Modern gallery design 53" loading="lazy">
+      <img src="../M-Keshiro/image/modga54.jpg" alt="Modern gallery design 54" loading="lazy">
+      <img src="../M-Keshiro/image/modga55.jpg" alt="Modern gallery design 55" loading="lazy">
+      <img src="../M-Keshiro/image/modga56.jpg" alt="Modern gallery design 56" loading="lazy">
+      <img src="../M-Keshiro/image/modga57.jpg" alt="Modern gallery design 57" loading="lazy">
+      <img src="../M-Keshiro/image/modga58.jpg" alt="Modern gallery design 58" loading="lazy">
+      <img src="../M-Keshiro/image/modga59.jpg" alt="Modern gallery design 59" loading="lazy">
+      <img src="../M-Keshiro/image/modga60.jpg" alt="Modern gallery design 60" loading="lazy">
+      <img src="../M-Keshiro/image/modga61.jpg" alt="Modern gallery design 61" loading="lazy">
+      <img src="../M-Keshiro/image/modga62.jpg" alt="Modern gallery design 62" loading="lazy">
     </div>
   </main>
 
@@ -92,6 +176,10 @@
   <footer>
     <p>&copy; 2025 @ A.A | All Rights Reserved.</p>
   </footer>
+  <script>
+  document.querySelectorAll("video").forEach(v => v.playbackRate = 0.5);
+</script>
+  <script src="script.js"></script>
 </body>
 </html>
 

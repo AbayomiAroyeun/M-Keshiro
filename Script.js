@@ -166,3 +166,33 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+document.addEventListener('DOMContentLoaded', () => {
+  // Check if the current page is the gallery page using the body ID
+  const isGalleryPage = document.body.id === 'gallery-page';
+
+  if (isGalleryPage) {
+    const galleryContainer = document.querySelector('.gallerys');
+    if (galleryContainer) {
+      const images = galleryContainer.querySelectorAll('img');
+
+      images.forEach((img, index) => {
+        // Create a new container div for the image and number
+        const imgContainer = document.createElement('div');
+        imgContainer.classList.add('gallery-item');
+
+        // Create the number span
+        const numberSpan = document.createElement('span');
+        numberSpan.classList.add('image-number');
+        numberSpan.textContent = index + 1; // Start numbering from 1
+
+        // Wrap the image
+        img.parentNode.insertBefore(imgContainer, img);
+        imgContainer.appendChild(img);
+        imgContainer.appendChild(numberSpan);
+      });
+    }
+  }
+
+  // Other JavaScript logic from your other pages would go here,
+  // protected by conditional checks if necessary.
+});
