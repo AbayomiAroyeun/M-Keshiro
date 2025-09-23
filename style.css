@@ -95,13 +95,13 @@ body.nav-open {
 
 .brand a {
   text-decoration: none;
-  color: gold;
+  color: #FFD700;
 }
 
 .brand h1 {
   margin: 0;
   font-family: 'Playfair Display', serif;
-  font-size: clamp(1.5rem, 4vw, 1.8rem);
+  font-size: clamp(2.5rem, 4vw, 1.8rem);
   font-weight: 700;
   letter-spacing: 2px;
   white-space: nowrap;

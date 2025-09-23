@@ -193,6 +193,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Other JavaScript logic from your other pages would go here,
+  // Other JavaScript logic from your other pages go here,
   // protected by conditional checks if necessary.
+
+
 });

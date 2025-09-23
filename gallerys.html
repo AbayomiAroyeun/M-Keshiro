@@ -96,13 +96,15 @@
   transform: scale(1.05);
   box-shadow: 0 6px 15px rgba(0,0,0,0.25);
 }
+
+
   </style>
 </head>
 
 <body class="js-enabled" id="gallery-page">
   <!-- Header -->
   <header>
-    <h1>Take a Look at Our Gallery</h1>
+    <h1>Gallery</h1>
   </header>
 
   <!-- Gallery -->
@@ -179,7 +181,33 @@
   <script>
   document.querySelectorAll("video").forEach(v => v.playbackRate = 0.5);
 </script>
-  <script src="../script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+  // Only run on gallery.html (set <body id="gallery-page"> there)
+  if (document.body.id === 'gallery-page') {
+    const galleryContainer = document.querySelector('.gallerys');
+    if (!galleryContainer) return;
+
+    const images = galleryContainer.querySelectorAll('img');
+
+    images.forEach((img, index) => {
+      // Wrap each image inside a container
+      const imgContainer = document.createElement('div');
+      imgContainer.classList.add('gallery-item');
+
+      // Add number label
+      const numberSpan = document.createElement('span');
+      numberSpan.classList.add('image-number');
+      numberSpan.textContent = index + 1; // start from 1
+
+      // Insert wrapper before the image, then move image + number inside
+      img.parentNode.insertBefore(imgContainer, img);
+      imgContainer.appendChild(img);
+      imgContainer.appendChild(numberSpan);
+    });
+  }
+});
+  </script>
 </body>
 </html>
 
